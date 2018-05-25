@@ -197,6 +197,7 @@ func main() {
     if err != nil {
         panic(err)
     }
+    io.Copy(os.Stdout, reader)
 
     resp, err := cli.ContainerCreate(ctx, &container.Config{
         Image: "alpine",
