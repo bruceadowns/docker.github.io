@@ -180,10 +180,12 @@ import (
     "io"
     "os"
 
+    "golang.org/x/net/context"
+
     "github.com/docker/docker/client"
     "github.com/docker/docker/api/types"
     "github.com/docker/docker/api/types/container"
-    "golang.org/x/net/context"
+    "github.com/docker/docker/pkg/stdcopy"
 )
 
 func main() {
@@ -224,7 +226,7 @@ func main() {
         panic(err)
     }
 
-    io.Copy(os.Stdout, out)
+    stdcopy.StdCopy(os.Stdout, os.Stderr, out)
 }
 ```
 
